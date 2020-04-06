@@ -15,7 +15,12 @@ export class MyMath {
         // 'this' referenziert den Kontext in dem die aktuelle Funktion aufgerufen wird. 
         // Hier referenziert es die Instanz der Klasse MyMath die wir gerade erstellen.
         // mit 'value * 1' erzwingen wir, dass value als number gelesen wird.
-        this.value = value * 1; 
+        if (!value) {
+            this.value = 0;
+        }
+        else {
+            this.value = value * 1; 
+        }
     }
 
     //Gives an Alert with actual value
