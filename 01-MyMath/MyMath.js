@@ -25,7 +25,11 @@ export class MyMath {
 
     //Gives an Alert with actual value
     show() {
-        alert("Value is " + this.value);
+        console.log("Value is " + this.value);
+    }
+
+    get() {
+        return this.value;
     }
 
     // Set the value of myMath manually:
@@ -66,12 +70,17 @@ export class MyMath {
 
     pow(value) {
         let temp = this.value;
-        for (let a = 2; a <= value; a++) {
-            this.value *= temp;
+
+        if (value == 0) {
+            return this.value = 1;
+        }
+        else {
+            for (let a = 2; a <= value; a++) {
+                this.value *= temp;
+            }
+            return this;
         }
 
-
-        return this;
     }
 
     faculty() {
@@ -82,6 +91,10 @@ export class MyMath {
         }
         else {
             alert(this.value + " is no valid integer.");
+        }
+
+        if (this.value == 0) {
+            this.value = 1;   // Erstaunlich aber sinnvoll! 0! = 1; (Sonst stirbt das Universum)
         }
 
         return this;

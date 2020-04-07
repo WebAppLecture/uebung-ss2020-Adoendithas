@@ -1,12 +1,12 @@
 .calculator {
-    width: 205px;
+    width: 275px;
     border: 1px dashed black;
     background: url(sprites/backgr.fw.png);
 }
 
 .numpad {
     width: 100%;
-    min-height: 125px;
+    min-height: 145px;
     line-height: 30px;
 }
 
@@ -25,7 +25,7 @@
 .screen {
     width: 100%;
     resize: none;
-    height: 60px;
+    min-height: 180px;
     padding: 10px;
     overflow-y: hidden;
     border: none;
