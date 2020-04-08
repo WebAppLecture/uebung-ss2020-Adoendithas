@@ -1,0 +1,75 @@
+.controls > *,
+.skin-change > div {
+    background-color: var(--brown);
+
+    font-size: 3.5vh;
+    text-align: center;
+
+    background: rgb(0,168,255);
+    background: linear-gradient(90deg, 
+    rgba(0,168,255,1) 0%, 
+    rgba(7,65,158,1) 25%, 
+    rgba(241,66,8,1) 50%, 
+    rgba(7,65,158,1) 75%, 
+    rgba(0,168,255,1) 100%);
+
+}
+
+.controls > *{
+    font-size: 6vh;
+
+}
+
+.controls > div:active,
+.skin-change > div:active {
+    box-shadow: 0 0 2vh 0 rgb(247, 244, 244) inset,
+        0 0 1vh 0 var(--text-color);
+}
+
+.big-button:active {
+    font-size: 4.8vh;
+}
+
+.d-pad {
+    background: linear-gradient(
+        90deg, 
+        black 0%,
+        rgba(7,65,158,1) 25%, 
+        rgba(241,66,8,1) 50%, 
+        rgba(7,65,158,1) 75%, 
+        var(--dark-brown) 90%,
+        black 100%
+        );
+
+    border-radius: 6vh;
+    border-bottom-left-radius: 100% 75%;
+    border-top-right-radius: 100% 75%;
+
+}
+
+.reset {
+    right: 3vh;
+    top: 2.2vh;
+
+    transform: rotate(30deg);
+
+    border-radius: 1vh;
+
+    font-size: 3vh;
+}
+
+.skin-change > div {
+    width: 4vh;
+    height: 4vh;
+    margin-right: 1vh;
+}
+
+.previous {
+    border-top-left-radius: 100% 50%;
+    border-bottom-left-radius: 100% 50%;
+}
+
+.next {
+    border-top-right-radius: 100% 50%;
+    border-bottom-right-radius: 100% 50%;
+}
