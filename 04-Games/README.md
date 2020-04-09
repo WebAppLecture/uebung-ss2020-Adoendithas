@@ -23,14 +23,50 @@ Lest den Code von **[TestGame](./src/js/games/TestGame.js)**, **[Pong](./src/js/
 
 Stellt euch diese Fragen: 
 * Was unterscheidet den Programmablauf von Pong grundsätzlich von Snake?
+`//A:`
+        Snake: Während des Spiels kommen Objekte (Schlangensegmente) hinzu, Pong beginnt mit allen Elementen auf dem Feld.
+        Snake: Geschwindgkeit ändert sich im Spielverlauf (Pong ebenfalls nur am Anfang)
 * Warum ist für `Snake` und `Pong` kein Konstruktor definiert?
+`//A:`
+        Die GameTemplate.js besitzt einen Konstruktor in welchem start() aufgerufen wird.
+        Die Methode start() ist in den Spielen jeweils anders definiert und handelt den Spielbeginn.
 * Warum benutzt Snake keine Kollisionsabfragen?
+`//A:`
+        Für mich ist das eine Kollisionsabfrage (in Update, L.45):
+        if(this.borderCollsion(ctx) || this.selfCollision()) {
+            this.gameOverText = ["GAME OVER", "Score: " + (this.segments.length - this.startLength) ,"Restart: A"];
+            this.end();
+        }
 * Warum macht es Sinn auf `keydown` bzw `keyup` events zu reagieren anstatt `keypress`?
+`//A:`
+        `keydown`,`keyup` triggert nur bei drücken (einmalig) oder loslassen (einmalig), bei Obejten die wieder von alleine stehen bleiben sollen bieten sich somit diese Funktionen an (man kann 5* push auf keyup als 5* y+=bla werten, bei keypress triggert das Event entsprechend solange der User drückt - präzises Movement wird schwierig)
 * Wo wird eigentlich `this.maxBallSpeed` in Pong gesetzt?
+`//A:`   
+        `this.maxBallSpeed` wird am Anfang im Menu gesetzt (nach Schwierigkeitsgrad). Bei jeder Collision des Balls mit einem der Padle wird limitBallSpee aufgerufen, diese Methode reduziert die Ballgeschwindikeit falls drüber entsprechend.
 * Warum brauchen wir `this.maxBallSpeed` überhaupt?
+`//A:`   
+        siehe oben
 * Warum können wir durch drücken der `primary` Aktion (Tastenbelegung in [Inputs.js](./src/js/Inputs.js)) ein Spiel neu starten?
+`//A:`   
+        In GameEngine.js existiert die Methode
+        get menuInteraction() {
+        return {
+            "primary": () => this.menu.select(),
+            "up": () => this.menu.changeActiveItem(1),
+            "down": () => this.menu.changeActiveItem(-1),
+            "reset": () => this.showGameSelect(),
+        }
+        }
+        Da der primary key this.menu.select() aufruft und die select Methode this.onSelect verarbeitet (in dieser Variablen befindet sich das gewählte Spiel, dass somit gestartet wird)
 * Wie erhöht man die Geschwindigkeit der Schlange in Snake?
+`//A:`
+        Die wird bei mir ehrlich gesagt nicht schenller :/ (grad bis über 40 gezockt...), aber ich vermute die Geschwindigkeit lässt sich über die FPS steuern
+        (this.fpsControl.fps = 2;)
 * Warum müssen `update` und `draw` Aufrufe den Canvaskontext `ctx` erhalten?
+`//A:`
+        Ich hätte vermutet ctx enthält das canvas (sowas wie var ctx = canvas.getContext("2d");), allerdings habe ich nur
+        this.renderContext = this.screen.getContext('2d'); in GameEngine gefunden...
+        d.h. tatsächlich weiß ich nicht wo ctx erzeugt/ definiert wird und was es enthält.
 
 ## 02 Falling Stones ##
 

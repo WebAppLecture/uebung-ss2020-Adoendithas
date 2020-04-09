@@ -1,11 +1,11 @@
 export const Inputs = {
     "primary": {
         "keys": [101],
-        "text": "E",
+        "text": "A",
     },
     "secondary": {
         "keys": [113],
-        "text": "Q",
+        "text": "B",
     },
     "up": {
         "keys": [87, 38],
